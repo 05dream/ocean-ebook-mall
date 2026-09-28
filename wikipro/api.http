@@ -1,0 +1,23 @@
+### 用户注册
+POST http://localhost:8080/user/register
+Content-Type: application/json
+
+{
+  "username": "test001",
+  "password": "123456",
+  "userImg": "",
+  "flag": "0"
+}
+
+### 用户登录（成功返回token）
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "test001",
+  "password": "123456"
+}
+
+### 需要token的测试接口（示例）
+GET http://localhost:8080/user/info
+Authorization: Bearer 这里粘贴登录返回的token
