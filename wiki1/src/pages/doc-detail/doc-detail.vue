@@ -20,8 +20,8 @@
       <view class="info-card">
         <view class="price-section">
           <text class="price-symbol">¥</text>
-          <text class="price-integer">{{ doc.price ? Math.floor(doc.price) : '0' }}</text>
-          <text class="price-decimal">{{ doc.price ? '.' + String(doc.price % 1).slice(2).padStart(2, '0') : '.00' }}</text>
+          <text class="price-integer">{{ priceParts[0] }}</text>
+          <text class="price-decimal">.{{ priceParts[1] }}</text>
         </view>
         <view class="title-section">
           <text class="goods-name">{{ doc.docTitle }}</text>
@@ -122,6 +122,11 @@ export default {
   onShow() {
     this.getCartCount()
     this.checkCollectStatus()
+  },
+  computed: {
+    priceParts() {
+      return Number(this.doc.price || 0).toFixed(2).split('.')
+    }
   },
   methods: {
     toBack() {
